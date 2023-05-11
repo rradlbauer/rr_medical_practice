@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.spengergasse.medical_practice.PatientView"
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <MenuBar>
+            <Menu text="%patients">
+                <MenuItem text="%newPatient" onAction="#newPatient"/>
+                <MenuItem text="%visits"/>
+                <MenuItem text="%diagnoses"/>
+                <MenuItem text="%therapies"/>
+            </Menu>
+            <Menu text="%schedules">
+                <MenuItem text="%schedule_planner" onAction="#showSchedules"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.3">
+            <items>
+                <ListView fx:id="patientsList"/>
+                <FlowPane alignment="CENTER">
+                    <GridPane hgap="10" vgap="10">
+                        <Label text="%patname" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="tfName" promptText="%name_of_patient" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="%birth" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dpBirth" promptText="%birth" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="%svnr" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="tfSSN" promptText="%social_security_number" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="%gender" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <HBox GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <RadioButton fx:id="rbFemale" text="%female">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="gender"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton fx:id="rbMale" text="%male">
+                                <toggleGroup>
+                                    <fx:reference source="gender"/>
+                                </toggleGroup>
+                            </RadioButton>
+                        </HBox>
+                        <Label text="%insurance" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="cbInsurance" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                        <Label text="%phone" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextField fx:id="tfPhone" promptText="%phone_number" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                        <Button text="%adresses" GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#editAdresses"/>
+                        <Label fx:id="lbAdress" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </FlowPane>
+            </items>
+        </SplitPane>
+    </center>
+
+</BorderPane>
